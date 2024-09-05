@@ -14,8 +14,8 @@ There are several ways to opt in. We recommend choosing the approach that best s
 
 ### Opt in locally
 
-To opt in to a specific API element when you use it in your code, use the `@OptIn` annotation with a reference to the API
-element. For example, suppose you want to use the `DateProvider` class, which requires an opt-in:
+To opt in to a specific API element when you use it in your code, use the `@OptIn` annotation with a reference to the experimental
+API marker. For example, suppose you want to use the `DateProvider` class, which requires an opt-in:
 
 ```kotlin
 // Library code
@@ -63,7 +63,8 @@ A safer approach is to propagate the opt-in requirements when you choose to opt 
 #### Propagate opt-in requirements
 
 When you use API in your code that's intended for third-party use, such as in a library, you can propagate its opt-in requirement
-to your API as well. To do this, annotate your declaration with the _[opt-in requirement annotation](#create-opt-in-requirement-annotations)_ of the API used in its body.
+to your API as well. To do this, mark your declaration with the same _[opt-in requirement annotation](#create-opt-in-requirement-annotations)_
+used by the library.
 
 For example, let's use the `DateProvider` class from before, which requires an opt-in:
 
@@ -78,7 +79,7 @@ annotation class MyDateTime // Opt-in requirement annotation
 class DateProvider // A class requiring opt-in
 ```
 
-In your code, before declaring a function that uses the `DateProvider` class, you must add the `@MyDateTime` annotation:
+In your code, before declaring a function that uses the `DateProvider` class, add the `@MyDateTime` annotation:
 
 ```kotlin
 // Client code
@@ -122,7 +123,7 @@ fun getDate(dateProvider: DateProvider): Date { // Has DateProvider as a part of
 }
 
 fun displayDate() {
-    println(getDate()) // Warning: getDate() requires opt-in
+    println(getDate()) // Error: getDate() requires opt-in
 }
 ```
 
@@ -367,7 +368,6 @@ There may be times when you want more granular control over which specific parts
 extended. For example, when you have some API that is stable to use but:
 
 * **Unstable to implement** due to ongoing evolution, such as when you have a family of interfaces where you expect to add new abstract functions without default implementations.
-* **Closed to third-party implementations** due to internal or technical reasons, such as an API that you want to be sealed but can't for technical reasons.
 * **Delicate or fragile to implement**, such as individual functions that need to behave in a coordinated manner.
 * **Has a contract that may be weakened in the future** in a backwards-incompatible manner for external implementations, such as changing an input parameter `T` to a nullable version `T?` where the code didn't previously consider `null` values.
 
