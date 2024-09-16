@@ -1,11 +1,11 @@
 - lang: en
-  startDate: '2024-09-21'
-  endDate: '2024-09-21'
-  location: Chennai, India
-  speaker: 'TBD'
-  title: 'Ko-Hacks'
-  subject: 'A diverse Kotlin Hackathon by KUG Chennai'
-  url: https://lu.ma/rbofnzaf
+  startDate: '2024-10-03'
+  endDate: '2024-10-03'
+  location: Lisbon, Portugal
+  speaker: 'Paulo Pereira'
+  title: 'Mutabilidade: Necessidade ou Hábito?'
+  subject: 'Kotlin é uma linguagem cujo desenho valoriza a imutabilidade, colocando-a em plano de igualdade com a mutabilidade'
+  url: https://www.meetup.com/pt-BR/kotlin-lisboa/events/301917980/
 - lang: en
   startDate: '2024-11-19'
   endDate: '2024-11-19'
